@@ -1,13 +1,32 @@
-<p>excelsheet works!</p>
+<input id="fileUploder" type="file" (change)="onFileChange($event)" multiple="false" />
+<hr/>
+<ng-container *ngIf="data" >
+<div *ngFor="let row of data[0]; index as ind">
+  item {{row}}:
+<select [id]="'select' + ind" formControlName="orders" id="orders" class="form-control select2 select2-hidden-accessible" style="width: 400px" tabindex="-1" aria-hidden="true">
+    <option *ngFor="let order of orders; let i = index" [value]="orders[i].value" [attr.selected]="orders[i].index == ind ? true : null">
+      {{orders[i].key}}  <span *ngIf="orders[i].required">*</span>
 
-<input type="file" (change)="onFileChange($event)" multiple="false" />
+    </option>
+  </select>
+</div>
+<button>اعتبار سنجی و نگاشت</button>
+
+</ng-container>
 
 <table class="table">
     <tbody>
-        <tr *ngFor="let row of data">
-                <td *ngFor="let cell of row">
-                        {{cell}}
+        <tr *ngFor="let row of data; index as i">
+            <ng-container *ngIf="i==0" >
+                <th  *ngFor="let cell of row">
+                    {{cell}}
+            </th>
+            </ng-container>
+            <ng-container *ngIf="i>0" >
+                <td  *ngFor="let cell of row">
+                    {{cell}}
                 </td>
+            </ng-container>
         </tr>
     </tbody>
 </table>
