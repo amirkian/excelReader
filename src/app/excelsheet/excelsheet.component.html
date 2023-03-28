@@ -1,19 +1,30 @@
 <input id="fileUploder" type="file" (change)="onFileChange($event)" multiple="false" />
+
 <hr/>
-<ng-container *ngIf="data" >
-<div *ngFor="let row of data[0]; index as ind">
-  item {{row}}:
-<select [id]="'select' + ind" formControlName="orders" id="orders" class="form-control select2 select2-hidden-accessible" style="width: 400px" tabindex="-1" aria-hidden="true">
-    <option *ngFor="let order of orders; let i = index" [value]="orders[i].value" [attr.selected]="orders[i].index == ind ? true : null">
-      {{orders[i].key}}  <span *ngIf="orders[i].required">*</span>
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
 
-    </option>
-  </select>
-</div>
-<button>اعتبار سنجی و نگاشت</button>
+  <ng-container *ngIf="data" >
+  <div *ngFor="let row of data[0]; index as ind " class="my-2">
+    <div class="row">
+        <div class="col-md-2">    item {{row}}:</div>
+        <div class="col">           
+    <select [id]="'select' + ind" [name]="'select' + ind" ngModel class="form-control select2 select2-hidden-accessible " style="width: 400px" tabindex="-1" aria-hidden="true">
+        <option [ngValue]="field.value" *ngFor="let field of fields;let i = index" [attr.selected]="field.index == ind ? true : null">
+          {{field.key}} <span *ngIf="field.required">*</span>
+        </option>
+      </select>
+        </div>
+    </div>
 
+  </div>
+
+    <div>
+      <button type="submit">اعتبار سنجی و نگاشت</button>
+    </div>
 </ng-container>
-
+  </form>
+<hr/>
+  <!-- --------------------------------------------------------------------------  -->
 <table class="table">
     <tbody>
         <tr *ngFor="let row of data; index as i">
