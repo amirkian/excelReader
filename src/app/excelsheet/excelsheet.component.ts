@@ -4,6 +4,8 @@ import { country } from '../Models/country.model';
 import { field } from '../Models/field.model';
 import $ = require('jquery');
 import { header } from '../Models/header.model';
+import { body } from '../Models/body.model';
+import { payment } from '../Models/payment.model';
 
 declare function callSelect2(): any;
 
@@ -268,92 +270,100 @@ export class ExcelsheetComponent implements OnInit {
     console.log('selectedFieldList:', selectedFieldList);
     console.log('data:', this.data);
 
-    var header= new header();
-    header.taxid= "0";
-    header.indatim= "0";
-    header.Indati2m= "0";
-    header.inty= "0";
-    header.inno= "0";
-    header.irtaxid= "0";
-    header.inp= "0";
-    header.ins= "0";
-    header.tins= "0";
-    header.tob= "0";
-    header.bid= "0";
-    header.tinb= "0";
-    header.sbc= "0";
-    header.bpc= "0";
-    header.bbc= "0";
-    header.ft= "0";
-    header.bpn= "0";
-    header.scln= "0";
-    header.scc= "0";
-    header.cdcn= "0";
-    header.cdcd= "0";
-    header.crn= "0";
-    header.billid= "0";
-    header.tprdis= "0";
-    header.tdis= "0";
-    header.tadis= "0";
-    header.tvam= "0";
-    header.todam= "0";
-    header.tbill= "0";
-    header.tonw= "0";
-    header.torv= "0";
-    header.tocv= "0";
-    header.setm= "0";
-    header.cap= "0";
-    header.insp= "0";
-    header.tvop= "0";
-    header.tax17= "0";
+    var header = new header();
+    header.taxid = "0";
+    header.indatim = "0";
+    header.Indati2m = "0";
+    header.inty = "0";
+    header.inno = "0";
+    header.irtaxid = "0";
+    header.inp = "0";
+    header.ins = "0";
+    header.tins = "0";
+    header.tob = "0";
+    header.bid = "0";
+    header.tinb = "0";
+    header.sbc = "0";
+    header.bpc = "0";
+    header.bbc = "0";
+    header.ft = "0";
+    header.bpn = "0";
+    header.scln = "0";
+    header.scc = "0";
+    header.cdcn = "0";
+    header.cdcd = "0";
+    header.crn = "0";
+    header.billid = "0";
+    header.tprdis = "0";
+    header.tdis = "0";
+    header.tadis = "0";
+    header.tvam = "0";
+    header.todam = "0";
+    header.tbill = "0";
+    header.tonw = "0";
+    header.torv = "0";
+    header.tocv = "0";
+    header.setm = "0";
+    header.cap = "0";
+    header.insp = "0";
+    header.tvop = "0";
+    header.tax17 = "0";
+
+    // var body = new body();
+    // body.sstid = "";
+    // body.sstt = "";
+    // body.am = 0;
+    // body.mu = 0;
+    // body.nw = 0;
+    // body.fee = 0;
+    // body.cfee = 0;
+    // body.cut = "";
+    // body.exr = 0;
+    // body.ssrv = 0;
+    // body.sscv = 0;
+    // body.prdis = 0;
+    // body.dis = 0;
+    // body.adis = 0;
+    // body.vra = 0;
+    // body.vam = 0;
+    // body.odt = "";
+    // body.odr = 0;
+    // body.odam = 0;
+    // body.olt = "";
+    // body.olr = 0;
+    // body.consfee = 0;
+    // body.spro = 0;
+    // body.bros = 0;
+    // body.tcpbs = 0;
+    // body.cop = 0;
+    // body.vop = 0;
+    // body.bsrn = "";
+    // body.tsstam = 0;
+
+    var payment = new payment();
+    payment.iinn = 0
+    payment.acn = 0
+    payment.trmn = 0;
+    payment.pmt = 0;
+    payment.trn = 0;
+    payment.pcn = 0;
+    payment.pid = 0;
+    payment.pdt = 0
+    payment.pv = 0;
+
+
+
     let expected = {
-      "header":header ,
+      "header": header,
       "body": [
-        {
-          "sstid": "0",
-          "sstt": "0",
-          "am": "0",
-          "mu": "0",
-          "nw": "0",
-          "fee": "0",
-          "cfee": "0",
-          "cut": "0",
-          "exr": "0",
-          "ssrv ": "0",
-          "sscv ": "0",
-          "prdis": "0",
-          "dis": "0",
-          "adis": "0",
-          "vra": "0",
-          "vam": "0",
-          "odt": "0",
-          "odr": "0",
-          "odam": "0",
-          "olt": "0",
-          "olr": "0",
-          "olam": "0",
-          "consfee": "0",
-          "spro": "0",
-          "bros": "0",
-          "tcpbs": "0",
-          "cop": "0",
-          "vop": "0",
-          "bsrn": "0",
-          "tsstam": "0"
-        }
+        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
+        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
+        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
+        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
+        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
       ],
       "payments": [
-        {
-          "iinn": "0",
-          "acn": "0",
-          "trmn": "0",
-          "pmt": "0",
-          "trn": "0",
-          "pcn": "0",
-          "pid": "0",
-          "pdt": "0",
-          "pv": "0",
-        }
+        payment
       ],
       "extension": [
         {

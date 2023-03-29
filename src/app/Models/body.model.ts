@@ -4,76 +4,91 @@ export class body {
   am: number;
   mu: number;
   nw: number;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
-  sstid: string;
+  fee: number;
+  cfee: number;
+  cut: string;
+  exr: number;
+  ssrv: number;
+  sscv: number;
+  prdis: number;
+  dis: number;
+  adis: number;
+  vra: number;
+  vam: number;
+  odt: string;
+  odr: number;
+  odam: number;
+  olt: string;
+  olr: number;
+  consfee: number;
+  spro: number;
+  bros: number;
+  tcpbs: number;
+  cop: number;
+  vop: number;
+  bsrn: string;
+  tsstam: number;
+
 
   constructor(
-    taxid: string,
-
-    ) {
-    this.taxid = taxid;
-
-  }
+    sstid: string,
+    sstt: string,
+    am: number,
+    mu: number,
+    nw: number,
+    fee: number,
+    cfee: number,
+    cut: string,
+    exr: number,
+    ssrv: number,
+    sscv: number,
+    prdis: number,
+    dis: number,
+    adis: number,
+    vra: number,
+    vam: number,
+    odt: string,
+    odr: number,
+    odam: number,
+    olt: string,
+    olr: number,
+    consfee: number,
+    spro: number,
+    bros: number,
+    tcpbs: number,
+    cop: number,
+    vop: number,
+    bsrn: string,
+    tsstam: number
+  ) {
+    this.sstid = sstid;
+    this.sstt = sstt;
+    this.am = am;
+    this.mu = mu;
+    this.nw = nw;
+    this.fee = fee;
+    this.cfee = cfee;
+    this.cut = cut;
+    this.exr = exr;
+    this.ssrv = ssrv;
+    this.sscv = sscv;
+    this.prdis = prdis;
+    this.dis = dis;
+    this.adis = adis;
+    this.vra = vra;
+    this.vam = vam;
+    this.odt = odt;
+    this.odr = odr;
+    this.odam = odam;
+    this.olt = olt;
+    this.olr = olr;
+    this.consfee = consfee;
+    this.spro = spro;
+    this.bros = bros;
+    this.tcpbs = tcpbs;
+    this.cop = cop;
+    this.vop = vop;
+    this.bsrn = bsrn;
+    this.tsstam = tsstam;
+ }
 }
-
-"sstid": "0",
-"sstt": "0",
-"am": "0",
-"mu": "0",
-"nw": "0",
-"fee": "0",
-"cfee": "0",
-"cut": "0",
-"exr": "0",
-"ssrv ": "0",
-"sscv ": "0",
-"prdis": "0",
-"dis": "0",
-"adis": "0",
-"vra": "0",
-"vam": "0",
-"odt": "0",
-"odr": "0",
-"odam": "0",
-"olt": "0",
-"olr": "0",
-"olam": "0",
-"consfee": "0",
-"spro": "0",
-"bros": "0",
-"tcpbs": "0",
-"cop": "0",
-"vop": "0",
-"bsrn": "0",
-"tsstam": "0"
