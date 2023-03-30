@@ -1,4 +1,4 @@
-export class field {
+export class Field {
   index:number;
   value:string;
   key:string;

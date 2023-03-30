@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { country } from '../Models/country.model';
-import { field } from '../Models/field.model';
+import { Field } from '../Models/field.model';
 import $ = require('jquery');
-import { header } from '../Models/header.model';
-import { body } from '../Models/body.model';
-import { payment } from '../Models/payment.model';
+import { Header } from '../Models/header.model';
+import { Body } from '../Models/body.model';
+import { Payment } from '../Models/payment.model';
 
 declare function callSelect2(): any;
 
@@ -186,13 +185,7 @@ export class ExcelsheetComponent implements OnInit {
 
 
   ];
-  fieldList: field[] = this.fields;
-  countryList: country[] = [
-    new country("1", "India"),
-    new country('2', 'USA'),
-    new country('3', 'England')
-  ];
-
+  fieldList: Field[] = this.fields;
 
   constructor() { }
 
@@ -242,7 +235,9 @@ export class ExcelsheetComponent implements OnInit {
       console.log(`${index}: ${obj}`);
       var val = $("#" + obj.id).val();
       if (val != null) {
-        selectedFieldList.push({ 'index': obj.id, 'value': val })
+        val = val.toString().match(/[^(\d+:\s+)]\w+/)?.toString();
+        const index = obj.id.toString().match(/\d+/)?.toString();
+        selectedFieldList.push({ 'index': index, 'value': val })
       }
 
     });
@@ -270,44 +265,44 @@ export class ExcelsheetComponent implements OnInit {
     console.log('selectedFieldList:', selectedFieldList);
     console.log('data:', this.data);
 
-    var header = new header();
-    header.taxid = "0";
-    header.indatim = "0";
-    header.Indati2m = "0";
-    header.inty = "0";
-    header.inno = "0";
-    header.irtaxid = "0";
-    header.inp = "0";
-    header.ins = "0";
-    header.tins = "0";
-    header.tob = "0";
-    header.bid = "0";
-    header.tinb = "0";
-    header.sbc = "0";
-    header.bpc = "0";
-    header.bbc = "0";
-    header.ft = "0";
-    header.bpn = "0";
-    header.scln = "0";
-    header.scc = "0";
-    header.cdcn = "0";
-    header.cdcd = "0";
-    header.crn = "0";
-    header.billid = "0";
-    header.tprdis = "0";
-    header.tdis = "0";
-    header.tadis = "0";
-    header.tvam = "0";
-    header.todam = "0";
-    header.tbill = "0";
-    header.tonw = "0";
-    header.torv = "0";
-    header.tocv = "0";
-    header.setm = "0";
-    header.cap = "0";
-    header.insp = "0";
-    header.tvop = "0";
-    header.tax17 = "0";
+    let header = new Header();
+    if (selectedFieldList.find(f => (f.value == "taxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "taxid")).value };
+    if (selectedFieldList.find(f => (f.value == "indatim"))) { header.taxid = selectedFieldList.find(f => (f.value == "indatim")).value };
+    if (selectedFieldList.find(f => (f.value == "Indati2m"))) { header.taxid = selectedFieldList.find(f => (f.value == "Indati2m")).value };
+    if (selectedFieldList.find(f => (f.value == "inty"))) { header.taxid = selectedFieldList.find(f => (f.value == "inty")).value };
+    if (selectedFieldList.find(f => (f.value == "inno"))) { header.taxid = selectedFieldList.find(f => (f.value == "inno")).value };
+    if (selectedFieldList.find(f => (f.value == "irtaxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "irtaxid")).value };
+    if (selectedFieldList.find(f => (f.value == "inp"))) { header.taxid = selectedFieldList.find(f => (f.value == "inp")).value };
+    if (selectedFieldList.find(f => (f.value == "ins"))) { header.taxid = selectedFieldList.find(f => (f.value == "ins")).value };
+    if (selectedFieldList.find(f => (f.value == "tins"))) { header.taxid = selectedFieldList.find(f => (f.value == "tins")).value };
+    if (selectedFieldList.find(f => (f.value == "tob"))) { header.taxid = selectedFieldList.find(f => (f.value == "tob")).value };
+    if (selectedFieldList.find(f => (f.value == "bid"))) { header.taxid = selectedFieldList.find(f => (f.value == "bid")).value };
+    if (selectedFieldList.find(f => (f.value == "tinb"))) { header.taxid = selectedFieldList.find(f => (f.value == "tinb")).value };
+    if (selectedFieldList.find(f => (f.value == "sbc"))) { header.taxid = selectedFieldList.find(f => (f.value == "sbc")).value };
+    if (selectedFieldList.find(f => (f.value == "bpc"))) { header.taxid = selectedFieldList.find(f => (f.value == "bpc")).value };
+    if (selectedFieldList.find(f => (f.value == "bbc"))) { header.taxid = selectedFieldList.find(f => (f.value == "bbc")).value };
+    if (selectedFieldList.find(f => (f.value == "taxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "taxid")).value };
+    if (selectedFieldList.find(f => (f.value == "bpn"))) { header.taxid = selectedFieldList.find(f => (f.value == "bpn")).value };
+    if (selectedFieldList.find(f => (f.value == "scln"))) { header.taxid = selectedFieldList.find(f => (f.value == "scln")).value };
+    if (selectedFieldList.find(f => (f.value == "scc"))) { header.taxid = selectedFieldList.find(f => (f.value == "scc")).value };
+    if (selectedFieldList.find(f => (f.value == "cdcn"))) { header.taxid = selectedFieldList.find(f => (f.value == "cdcn")).value };
+    if (selectedFieldList.find(f => (f.value == "cdcd"))) { header.taxid = selectedFieldList.find(f => (f.value == "cdcd")).value };
+    if (selectedFieldList.find(f => (f.value == "crn"))) { header.taxid = selectedFieldList.find(f => (f.value == "crn")).value };
+    if (selectedFieldList.find(f => (f.value == "billid"))) { header.taxid = selectedFieldList.find(f => (f.value == "billid")).value };
+    if (selectedFieldList.find(f => (f.value == "tprdis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tprdis")).value };
+    if (selectedFieldList.find(f => (f.value == "tdis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tdis")).value };
+    if (selectedFieldList.find(f => (f.value == "tadis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tadis")).value };
+    if (selectedFieldList.find(f => (f.value == "tvam"))) { header.taxid = selectedFieldList.find(f => (f.value == "tvam")).value };
+    if (selectedFieldList.find(f => (f.value == "todam"))) { header.taxid = selectedFieldList.find(f => (f.value == "todam")).value };
+    if (selectedFieldList.find(f => (f.value == "tbill"))) { header.taxid = selectedFieldList.find(f => (f.value == "tbill")).value };
+    if (selectedFieldList.find(f => (f.value == "tonw"))) { header.taxid = selectedFieldList.find(f => (f.value == "tonw")).value };
+    if (selectedFieldList.find(f => (f.value == "torv"))) { header.taxid = selectedFieldList.find(f => (f.value == "torv")).value };
+    if (selectedFieldList.find(f => (f.value == "tocv"))) { header.taxid = selectedFieldList.find(f => (f.value == "tocv")).value };
+    if (selectedFieldList.find(f => (f.value == "stem"))) { header.taxid = selectedFieldList.find(f => (f.value == "stem")).value };
+    if (selectedFieldList.find(f => (f.value == "cap"))) { header.taxid = selectedFieldList.find(f => (f.value == "cap")).value };
+    if (selectedFieldList.find(f => (f.value == "insp"))) { header.taxid = selectedFieldList.find(f => (f.value == "insp")).value };
+    if (selectedFieldList.find(f => (f.value == "tvop"))) { header.taxid = selectedFieldList.find(f => (f.value == "tvop")).value };
+    if (selectedFieldList.find(f => (f.value == "tax17"))) { header.taxid = selectedFieldList.find(f => (f.value == "tax17")).value };
 
     // var body = new body();
     // body.sstid = "";
@@ -356,11 +351,11 @@ export class ExcelsheetComponent implements OnInit {
     let expected = {
       "header": header,
       "body": [
-        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
-        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
-        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
-        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
-        new body("","",0,0,0,0,0,"",0,0,0,0,0,0,0,0,"",0,0,"",0,0,0,0,0,0,0,"",0),
+        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
+        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
+        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
+        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
+        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
       ],
       "payments": [
         payment

@@ -1,4 +1,4 @@
-export class body {
+export class Body {
   sstid: string;
   sstt: string;
   am: number;

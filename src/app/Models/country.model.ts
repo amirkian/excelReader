@@ -1,4 +1,4 @@
-export class country {
+export class Country {
     id:string;
     name:string;
    

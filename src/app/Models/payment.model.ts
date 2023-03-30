@@ -1,4 +1,4 @@
-export class payment {
+export class Payment {
   iinn: number;
   acn: number;
   trmn: number;
