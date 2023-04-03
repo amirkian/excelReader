@@ -15,7 +15,12 @@ declare function callSelect2(): any;
   styleUrls: ['./excelsheet.component.sass']
 })
 export class ExcelsheetComponent implements OnInit {
-  data: [][] | undefined;
+  public data!: [][];
+  public header = new Header();
+  public payment = new Payment();
+  public bodyList: Body[][] = [];
+  
+
   // fields = [
   //   { index:-1, value: 'none', key: 'هیچکدام' },
   //   //body********************************************************************************************************** */
@@ -233,11 +238,11 @@ export class ExcelsheetComponent implements OnInit {
     var selects = $('form select');
     $.each(selects, function (index, obj) {
       console.log(`${index}: ${obj}`);
-      var val = $("#" + obj.id).val();
-      if (val != null) {
-        val = val.toString().match(/[^(\d+:\s+)]\w+/)?.toString();
+      var field = $("#" + obj.id).val();
+      if (field != null) {
+        field = field.toString().match(/[^(\d+:\s+)]\w+/)?.toString();
         const index = obj.id.toString().match(/\d+/)?.toString();
-        selectedFieldList.push({ 'index': index, 'value': val })
+        selectedFieldList.push({ 'index': index, 'field': field })
       }
 
     });
@@ -260,116 +265,421 @@ export class ExcelsheetComponent implements OnInit {
 
     return newArray;
   }
-  mapFields(selectedFieldList) {
-    debugger;
-    console.log('selectedFieldList:', selectedFieldList);
-    console.log('data:', this.data);
 
-    let header = new Header();
-    if (selectedFieldList.find(f => (f.value == "taxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "taxid")).value };
-    if (selectedFieldList.find(f => (f.value == "indatim"))) { header.taxid = selectedFieldList.find(f => (f.value == "indatim")).value };
-    if (selectedFieldList.find(f => (f.value == "Indati2m"))) { header.taxid = selectedFieldList.find(f => (f.value == "Indati2m")).value };
-    if (selectedFieldList.find(f => (f.value == "inty"))) { header.taxid = selectedFieldList.find(f => (f.value == "inty")).value };
-    if (selectedFieldList.find(f => (f.value == "inno"))) { header.taxid = selectedFieldList.find(f => (f.value == "inno")).value };
-    if (selectedFieldList.find(f => (f.value == "irtaxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "irtaxid")).value };
-    if (selectedFieldList.find(f => (f.value == "inp"))) { header.taxid = selectedFieldList.find(f => (f.value == "inp")).value };
-    if (selectedFieldList.find(f => (f.value == "ins"))) { header.taxid = selectedFieldList.find(f => (f.value == "ins")).value };
-    if (selectedFieldList.find(f => (f.value == "tins"))) { header.taxid = selectedFieldList.find(f => (f.value == "tins")).value };
-    if (selectedFieldList.find(f => (f.value == "tob"))) { header.taxid = selectedFieldList.find(f => (f.value == "tob")).value };
-    if (selectedFieldList.find(f => (f.value == "bid"))) { header.taxid = selectedFieldList.find(f => (f.value == "bid")).value };
-    if (selectedFieldList.find(f => (f.value == "tinb"))) { header.taxid = selectedFieldList.find(f => (f.value == "tinb")).value };
-    if (selectedFieldList.find(f => (f.value == "sbc"))) { header.taxid = selectedFieldList.find(f => (f.value == "sbc")).value };
-    if (selectedFieldList.find(f => (f.value == "bpc"))) { header.taxid = selectedFieldList.find(f => (f.value == "bpc")).value };
-    if (selectedFieldList.find(f => (f.value == "bbc"))) { header.taxid = selectedFieldList.find(f => (f.value == "bbc")).value };
-    if (selectedFieldList.find(f => (f.value == "taxid"))) { header.taxid = selectedFieldList.find(f => (f.value == "taxid")).value };
-    if (selectedFieldList.find(f => (f.value == "bpn"))) { header.taxid = selectedFieldList.find(f => (f.value == "bpn")).value };
-    if (selectedFieldList.find(f => (f.value == "scln"))) { header.taxid = selectedFieldList.find(f => (f.value == "scln")).value };
-    if (selectedFieldList.find(f => (f.value == "scc"))) { header.taxid = selectedFieldList.find(f => (f.value == "scc")).value };
-    if (selectedFieldList.find(f => (f.value == "cdcn"))) { header.taxid = selectedFieldList.find(f => (f.value == "cdcn")).value };
-    if (selectedFieldList.find(f => (f.value == "cdcd"))) { header.taxid = selectedFieldList.find(f => (f.value == "cdcd")).value };
-    if (selectedFieldList.find(f => (f.value == "crn"))) { header.taxid = selectedFieldList.find(f => (f.value == "crn")).value };
-    if (selectedFieldList.find(f => (f.value == "billid"))) { header.taxid = selectedFieldList.find(f => (f.value == "billid")).value };
-    if (selectedFieldList.find(f => (f.value == "tprdis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tprdis")).value };
-    if (selectedFieldList.find(f => (f.value == "tdis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tdis")).value };
-    if (selectedFieldList.find(f => (f.value == "tadis"))) { header.taxid = selectedFieldList.find(f => (f.value == "tadis")).value };
-    if (selectedFieldList.find(f => (f.value == "tvam"))) { header.taxid = selectedFieldList.find(f => (f.value == "tvam")).value };
-    if (selectedFieldList.find(f => (f.value == "todam"))) { header.taxid = selectedFieldList.find(f => (f.value == "todam")).value };
-    if (selectedFieldList.find(f => (f.value == "tbill"))) { header.taxid = selectedFieldList.find(f => (f.value == "tbill")).value };
-    if (selectedFieldList.find(f => (f.value == "tonw"))) { header.taxid = selectedFieldList.find(f => (f.value == "tonw")).value };
-    if (selectedFieldList.find(f => (f.value == "torv"))) { header.taxid = selectedFieldList.find(f => (f.value == "torv")).value };
-    if (selectedFieldList.find(f => (f.value == "tocv"))) { header.taxid = selectedFieldList.find(f => (f.value == "tocv")).value };
-    if (selectedFieldList.find(f => (f.value == "stem"))) { header.taxid = selectedFieldList.find(f => (f.value == "stem")).value };
-    if (selectedFieldList.find(f => (f.value == "cap"))) { header.taxid = selectedFieldList.find(f => (f.value == "cap")).value };
-    if (selectedFieldList.find(f => (f.value == "insp"))) { header.taxid = selectedFieldList.find(f => (f.value == "insp")).value };
-    if (selectedFieldList.find(f => (f.value == "tvop"))) { header.taxid = selectedFieldList.find(f => (f.value == "tvop")).value };
-    if (selectedFieldList.find(f => (f.value == "tax17"))) { header.taxid = selectedFieldList.find(f => (f.value == "tax17")).value };
+  mapHeaderFields(selectedFieldList: any) {
+    let headerField = ['taxid', 'indatim', 'Indati2m', 'inty', 'inno', 'irtaxid', 'inp', 'ins', 'tins', 'tob', 'bid', 'tinb', 'sbc', 'bpc', 'bbc', 'taxid', 'bpn', 'scln', 'scc', 'cdcn', 'crn', 'billid', 'tprdis', 'tdis', 'tadis', 'tvam', 'todam', 'tbill', 'tonw', 'torv', 'tocv', 'stem', 'cap', 'insp', 'tvop', 'tax17'];
+    for (var item of headerField) {
+      if (selectedFieldList.find(f => (f.field == 'taxid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'taxid')).index;
+        let content = this.data?.[1][index];
+        this.header.taxid = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'indatim'))) {
+        let index = selectedFieldList.find(f => (f.field == 'indatim')).index;
+        let content = this.data?.[1][index];
+        this.header.indatim = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'Indati2m'))) {
+        let index = selectedFieldList.find(f => (f.field == 'Indati2m')).index;
+        let content = this.data?.[1][index];
+        this.header.Indati2m = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'inty'))) {
+        let index = selectedFieldList.find(f => (f.field == 'inty')).index;
+        let content = this.data?.[1][index];
+        this.header.inty = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'inno'))) {
+        let index = selectedFieldList.find(f => (f.field == 'inno')).index;
+        let content = this.data?.[1][index];
+        this.header.inno = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'irtaxid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'irtaxid')).index;
+        let content = this.data?.[1][index];
+        this.header.irtaxid = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'inp'))) {
+        let index = selectedFieldList.find(f => (f.field == 'inp')).index;
+        let content = this.data?.[1][index];
+        this.header.inp = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'ins'))) {
+        let index = selectedFieldList.find(f => (f.field == 'ins')).index;
+        let content = this.data?.[1][index];
+        this.header.ins = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tins'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tins')).index;
+        let content = this.data?.[1][index];
+        this.header.tins = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tob'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tob')).index;
+        let content = this.data?.[1][index];
+        this.header.tob = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'bid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bid')).index;
+        let content = this.data?.[1][index];
+        this.header.bid = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tinb'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tinb')).index;
+        let content = this.data?.[1][index];
+        this.header.tinb = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'sbc'))) {
+        let index = selectedFieldList.find(f => (f.field == 'sbc')).index;
+        let content = this.data?.[1][index];
+        this.header.sbc = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'bpc'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bpc')).index;
+        let content = this.data?.[1][index];
+        this.header.bpc = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'bbc'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bbc')).index;
+        let content = this.data?.[1][index];
+        this.header.bbc = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'taxid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'taxid')).index;
+        let content = this.data?.[1][index];
+        this.header.taxid = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'bpn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bpn')).index;
+        let content = this.data?.[1][index];
+        this.header.bpn = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'scln'))) {
+        let index = selectedFieldList.find(f => (f.field == 'scln')).index;
+        let content = this.data?.[1][index];
+        this.header.scln = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'scc'))) {
+        let index = selectedFieldList.find(f => (f.field == 'scc')).index;
+        let content = this.data?.[1][index];
+        this.header.scc = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'cdcn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cdcn')).index;
+        let content = this.data?.[1][index];
+        this.header.cdcn = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'crn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'crn')).index;
+        let content = this.data?.[1][index];
+        this.header.crn = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'billid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'billid')).index;
+        let content = this.data?.[1][index];
+        this.header.billid = content || '';
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tprdis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tprdis')).index;
+        let content = this.data?.[1][index];
+        this.header.tprdis = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tdis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tdis')).index;
+        let content = this.data?.[1][index];
+        this.header.tdis = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tadis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tadis')).index;
+        let content = this.data?.[1][index];
+        this.header.tadis = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tvam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tvam')).index;
+        let content = this.data?.[1][index];
+        this.header.tvam = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'todam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'todam')).index;
+        let content = this.data?.[1][index];
+        this.header.todam = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tbill'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tbill')).index;
+        let content = this.data?.[1][index];
+        this.header.tbill = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tbill'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tbill')).index;
+        let content = this.data?.[1][index];
+        this.header.tbill = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tonw'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tonw')).index;
+        let content = this.data?.[1][index];
+        this.header.tonw = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'torv'))) {
+        let index = selectedFieldList.find(f => (f.field == 'torv')).index;
+        let content = this.data?.[1][index];
+        this.header.torv = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tocv'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tocv')).index;
+        let content = this.data?.[1][index];
+        this.header.tocv = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'stem'))) {
+        let index = selectedFieldList.find(f => (f.field == 'stem')).index;
+        let content = this.data?.[1][index];
+        this.header.stem = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'cap'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cap')).index;
+        let content = this.data?.[1][index];
+        this.header.cap = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'insp'))) {
+        let index = selectedFieldList.find(f => (f.field == 'insp')).index;
+        let content = this.data?.[1][index];
+        this.header.insp = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tvop'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tvop')).index;
+        let content = this.data?.[1][index];
+        this.header.tvop = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'tax17'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tax17')).index;
+        let content = this.data?.[1][index];
+        this.header.tax17 = content || 0;
+      }
 
-    // var body = new body();
-    // body.sstid = "";
-    // body.sstt = "";
-    // body.am = 0;
-    // body.mu = 0;
-    // body.nw = 0;
-    // body.fee = 0;
-    // body.cfee = 0;
-    // body.cut = "";
-    // body.exr = 0;
-    // body.ssrv = 0;
-    // body.sscv = 0;
-    // body.prdis = 0;
-    // body.dis = 0;
-    // body.adis = 0;
-    // body.vra = 0;
-    // body.vam = 0;
-    // body.odt = "";
-    // body.odr = 0;
-    // body.odam = 0;
-    // body.olt = "";
-    // body.olr = 0;
-    // body.consfee = 0;
-    // body.spro = 0;
-    // body.bros = 0;
-    // body.tcpbs = 0;
-    // body.cop = 0;
-    // body.vop = 0;
-    // body.bsrn = "";
-    // body.tsstam = 0;
 
-    var payment = new payment();
-    payment.iinn = 0
-    payment.acn = 0
-    payment.trmn = 0;
-    payment.pmt = 0;
-    payment.trn = 0;
-    payment.pcn = 0;
-    payment.pid = 0;
-    payment.pdt = 0
-    payment.pv = 0;
-
-
-
-    let expected = {
-      "header": header,
-      "body": [
-        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
-        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
-        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
-        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
-        new Body("", "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0),
-      ],
-      "payments": [
-        payment
-      ],
-      "extension": [
-        {
-          "key": null,
-          "value": null
-        }
-      ]
     }
-
   }
+  mapPaymentFields(selectedFieldList: any) {
+    let paymentField = ['iinn', 'acn', 'trmn', 'pmt', 'trn', 'pcn', 'pid', 'pdt', 'pv'];
+    for (var item of paymentField) {
+      if (selectedFieldList.find(f => (f.field == 'iinn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'iinn')).index;
+        let content = this.data?.[1][index];
+        this.payment.iinn = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'acn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'acn')).index;
+        let content = this.data?.[1][index];
+        this.payment.acn = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'trmn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'trmn')).index;
+        let content = this.data?.[1][index];
+        this.payment.trmn = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'pmt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'pmt')).index;
+        let content = this.data?.[1][index];
+        this.payment.pmt = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'trn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'trn')).index;
+        let content = this.data?.[1][index];
+        this.payment.trn = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'pcn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'pcn')).index;
+        let content = this.data?.[1][index];
+        this.payment.pcn = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'pid'))) {
+        let index = selectedFieldList.find(f => (f.field == 'pid')).index;
+        let content = this.data?.[1][index];
+        this.payment.pid = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'pdt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'pdt')).index;
+        let content = this.data?.[1][index];
+        this.payment.pdt = content || 0;
+      }
+      else if (selectedFieldList.find(f => (f.field == 'pv'))) {
+        let index = selectedFieldList.find(f => (f.field == 'pv')).index;
+        let content = this.data?.[1][index];
+        this.payment.pv = content || 0;
+      }
+    }
+  }
+  mapBodyFields(selectedFieldList: any) {
+    debugger;
+    let bodyField = ['sstt', 'am', 'mu', 'nw', 'fee', 'cfee', 'cut', 'exr', 'ssrv', 'prdis', 'dis', 'adis', 'vra', 'vam', 'odt', 'odr', 'odam', 'olt', 'olr', 'consfee', 'spro', 'bros', 'tcpbs', 'cop', 'vop', 'bsrn', 'tsstam'];
+     let bodyarr : Body[] = [];
 
+let conter=0;
+    for (var item of this.data.slice(1)) {
+      conter++;
+var body=new Body();
+if (selectedFieldList.find(f => (f.field == 'sstt'))) {
+  let index = selectedFieldList.find(f => (f.field == 'sstt')).index;
+  let content = this.data?.[conter][index];
+  body.sstt = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'am'))) {
+  let index = selectedFieldList.find(f => (f.field == 'am')).index;
+  let content = this.data?.[conter][index];
+  body.am = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'mu'))) {
+  let index = selectedFieldList.find(f => (f.field == 'mu')).index;
+  let content = this.data?.[conter][index];
+  body.mu = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'nw'))) {
+  let index = selectedFieldList.find(f => (f.field == 'nw')).index;
+  let content = this.data?.[conter][index];
+  body.nw = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'fee'))) {
+  let index = selectedFieldList.find(f => (f.field == 'fee')).index;
+  let content = this.data?.[conter][index];
+  body.fee = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'cfee'))) {
+  let index = selectedFieldList.find(f => (f.field == 'cfee')).index;
+  let content = this.data?.[conter][index];
+  body.cfee = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'cut'))) {
+  let index = selectedFieldList.find(f => (f.field == 'cut')).index;
+  let content = this.data?.[conter][index];
+  body.cut = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'exr'))) {
+  let index = selectedFieldList.find(f => (f.field == 'exr')).index;
+  let content = this.data?.[conter][index];
+  body.exr = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'ssrv'))) {
+  let index = selectedFieldList.find(f => (f.field == 'ssrv')).index;
+  let content = this.data?.[conter][index];
+  body.ssrv = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'prdis'))) {
+  let index = selectedFieldList.find(f => (f.field == 'prdis')).index;
+  let content = this.data?.[conter][index];
+  body.prdis = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'dis'))) {
+  let index = selectedFieldList.find(f => (f.field == 'dis')).index;
+  let content = this.data?.[conter][index];
+  body.dis = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'adis'))) {
+  let index = selectedFieldList.find(f => (f.field == 'adis')).index;
+  let content = this.data?.[conter][index];
+  body.adis = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'vra'))) {
+  let index = selectedFieldList.find(f => (f.field == 'vra')).index;
+  let content = this.data?.[conter][index];
+  body.vra = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'vam'))) {
+  let index = selectedFieldList.find(f => (f.field == 'vam')).index;
+  let content = this.data?.[conter][index];
+  body.vam = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'odt'))) {
+  let index = selectedFieldList.find(f => (f.field == 'odt')).index;
+  let content = this.data?.[conter][index];
+  body.odt = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'odr'))) {
+  let index = selectedFieldList.find(f => (f.field == 'odr')).index;
+  let content = this.data?.[conter][index];
+  body.odr = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'consfee'))) {
+  let index = selectedFieldList.find(f => (f.field == 'consfee')).index;
+  let content = this.data?.[conter][index];
+  body.consfee = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'spro'))) {
+  let index = selectedFieldList.find(f => (f.field == 'spro')).index;
+  let content = this.data?.[conter][index];
+  body.spro = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'bros'))) {
+  let index = selectedFieldList.find(f => (f.field == 'bros')).index;
+  let content = this.data?.[conter][index];
+  body.bros = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'tcpbs'))) {
+  let index = selectedFieldList.find(f => (f.field == 'tcpbs')).index;
+  let content = this.data?.[conter][index];
+  body.tcpbs = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'cop'))) {
+  let index = selectedFieldList.find(f => (f.field == 'cop')).index;
+  let content = this.data?.[conter][index];
+  body.cop = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'vop'))) {
+  let index = selectedFieldList.find(f => (f.field == 'vop')).index;
+  let content = this.data?.[conter][index];
+  body.vop = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'bsrn'))) {
+  let index = selectedFieldList.find(f => (f.field == 'bsrn')).index;
+  let content = this.data?.[conter][index];
+  body.bsrn = content || 0;
+}
+ if (selectedFieldList.find(f => (f.field == 'tsstam'))) {
+  let index = selectedFieldList.find(f => (f.field == 'tsstam')).index;
+  let content = this.data?.[conter][index];
+  body.tsstam = content || 0;
+}
+bodyarr.push(body);
 
+    }
+    this.bodyList.push(bodyarr);
+    debugger;
+    console.log('this.body:',this.bodyList);
+  }
+WriteJsonFile(jsonData:any,path:string="./object.json"){
+  debugger;
 
 }
+
+
+mapFields(selectedFieldList) {
+  debugger;
+  console.log('selectedFieldList:', selectedFieldList);
+  console.log('data:', this.data);
+
+  this.mapHeaderFields(selectedFieldList);
+  this.mapPaymentFields(selectedFieldList);
+  this.mapBodyFields(selectedFieldList);
+  debugger;
+
+  let expected = {
+    "header": this.header,
+    "body": [
+this.bodyList
+    ],
+    "payments": [
+      this.payment
+    ],
+    "extension": [
+      {
+        "key": null,
+        "value": null
+      }
+    ]
+  }
+  console.log('expected:',expected);
+  this.WriteJsonFile(expected);
+
+}
+
+
+
+}//end class

@@ -10,15 +10,15 @@ export class Payment {
   pv: number;
 
   constructor(
-    iinn: number,
-    acn: number,
-    trmn: number,
-    pmt: number,
-    trn: number,
-    pcn: number,
-    pid: number,
-    pdt: number,
-    pv: number
+    iinn: number=0,
+    acn: number=0,
+    trmn: number=0,
+    pmt: number=0,
+    trn: number=0,
+    pcn: number=0,
+    pid: number=0,
+    pdt: number=0,
+    pv: number=0
 
 
   ) {
