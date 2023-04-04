@@ -7,6 +7,8 @@ import { Body } from '../Models/body.model';
 import { Payment } from '../Models/payment.model';
 
 declare function callSelect2(): any;
+const FileSaver = require('file-saver');
+
 
 
 @Component({
@@ -644,10 +646,18 @@ bodyarr.push(body);
     debugger;
     console.log('this.body:',this.bodyList);
   }
-WriteJsonFile(jsonData:any,path:string="./object.json"){
-  debugger;
+  writeContents(content, fileName, contentType) {
+    debugger;
+    var a = document.createElement('a');
+    var file = new Blob([JSON.stringify(content)], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+    localStorage['jsonfile'] =JSON.stringify(content);
+    console.log('jsonfile in localstorage is:',localStorage['jsonfile']) ;
+  }
 
-}
+
 
 
 mapFields(selectedFieldList) {
@@ -676,7 +686,8 @@ this.bodyList
     ]
   }
   console.log('expected:',expected);
-  this.WriteJsonFile(expected);
+  this.writeContents(expected, 'Sample File'+'.txt', 'text/plain');
+
 
 }
 
