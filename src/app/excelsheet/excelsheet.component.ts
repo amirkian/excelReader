@@ -655,6 +655,11 @@ bodyarr.push(body);
     a.click();
     localStorage['jsonfile'] =JSON.stringify(content);
     console.log('jsonfile in localstorage is:',localStorage['jsonfile']) ;
+  let flatObj= this.flattenObject({"k2": "v1","k4": "v2","k3": {"k1": "v4","k5": "v5" }});
+  console.log('flatObj:',flatObj);
+  var encodedObj=this.MergeFlatedObjValue(flatObj);
+console.log('encodedObj:',encodedObj);
+
   }
 
 
@@ -691,6 +696,40 @@ this.bodyList
 
 }
 
+ flattenObject(ob) {
+  var toReturn = {};
 
+  for (var i in ob) {
+      if (!ob.hasOwnProperty(i)) continue;
 
+      if ((typeof ob[i]) == 'object' && ob[i] !== null) {
+          var flatObject = this.flattenObject(ob[i]);
+          for (var x in flatObject) {
+              if (!flatObject.hasOwnProperty(x)) continue;
+
+              toReturn[i + '.' + x] = flatObject[x];
+          }
+      } else {
+          toReturn[i] = ob[i];
+      }
+  }
+  return toReturn;
+}
+MergeFlatedObjValue(obj){
+  debugger;
+  const myJSONString = JSON.stringify(obj);
+  const regexp = /(?<!:)("[\w.]+")/g;
+let matches = myJSONString.matchAll(regexp);
+var MergeFlatedObjValue="";
+
+for (const match of matches) {
+  var matched=match[0];
+   matched=matched.replace(/['"]+/g, '');
+  MergeFlatedObjValue+=obj[matched]+"#";
+
+}
+  console.log('MergeFlatedObjValue:',MergeFlatedObjValue);
+  return MergeFlatedObjValue;
+
+  }
 }//end class
