@@ -21,7 +21,7 @@ export class ExcelsheetComponent implements OnInit {
   public header = new Header();
   public payment = new Payment();
   public bodyList: Body[][] = [];
-  
+
 
   // fields = [
   //   { index:-1, value: 'none', key: 'هیچکدام' },
@@ -513,223 +513,271 @@ export class ExcelsheetComponent implements OnInit {
   mapBodyFields(selectedFieldList: any) {
     debugger;
     let bodyField = ['sstt', 'am', 'mu', 'nw', 'fee', 'cfee', 'cut', 'exr', 'ssrv', 'prdis', 'dis', 'adis', 'vra', 'vam', 'odt', 'odr', 'odam', 'olt', 'olr', 'consfee', 'spro', 'bros', 'tcpbs', 'cop', 'vop', 'bsrn', 'tsstam'];
-     let bodyarr : Body[] = [];
+    let bodyarr: Body[] = [];
 
-let conter=0;
+    let conter = 0;
     for (var item of this.data.slice(1)) {
       conter++;
-var body=new Body();
-if (selectedFieldList.find(f => (f.field == 'sstt'))) {
-  let index = selectedFieldList.find(f => (f.field == 'sstt')).index;
-  let content = this.data?.[conter][index];
-  body.sstt = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'am'))) {
-  let index = selectedFieldList.find(f => (f.field == 'am')).index;
-  let content = this.data?.[conter][index];
-  body.am = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'mu'))) {
-  let index = selectedFieldList.find(f => (f.field == 'mu')).index;
-  let content = this.data?.[conter][index];
-  body.mu = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'nw'))) {
-  let index = selectedFieldList.find(f => (f.field == 'nw')).index;
-  let content = this.data?.[conter][index];
-  body.nw = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'fee'))) {
-  let index = selectedFieldList.find(f => (f.field == 'fee')).index;
-  let content = this.data?.[conter][index];
-  body.fee = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'cfee'))) {
-  let index = selectedFieldList.find(f => (f.field == 'cfee')).index;
-  let content = this.data?.[conter][index];
-  body.cfee = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'cut'))) {
-  let index = selectedFieldList.find(f => (f.field == 'cut')).index;
-  let content = this.data?.[conter][index];
-  body.cut = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'exr'))) {
-  let index = selectedFieldList.find(f => (f.field == 'exr')).index;
-  let content = this.data?.[conter][index];
-  body.exr = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'ssrv'))) {
-  let index = selectedFieldList.find(f => (f.field == 'ssrv')).index;
-  let content = this.data?.[conter][index];
-  body.ssrv = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'prdis'))) {
-  let index = selectedFieldList.find(f => (f.field == 'prdis')).index;
-  let content = this.data?.[conter][index];
-  body.prdis = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'dis'))) {
-  let index = selectedFieldList.find(f => (f.field == 'dis')).index;
-  let content = this.data?.[conter][index];
-  body.dis = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'adis'))) {
-  let index = selectedFieldList.find(f => (f.field == 'adis')).index;
-  let content = this.data?.[conter][index];
-  body.adis = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'vra'))) {
-  let index = selectedFieldList.find(f => (f.field == 'vra')).index;
-  let content = this.data?.[conter][index];
-  body.vra = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'vam'))) {
-  let index = selectedFieldList.find(f => (f.field == 'vam')).index;
-  let content = this.data?.[conter][index];
-  body.vam = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'odt'))) {
-  let index = selectedFieldList.find(f => (f.field == 'odt')).index;
-  let content = this.data?.[conter][index];
-  body.odt = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'odr'))) {
-  let index = selectedFieldList.find(f => (f.field == 'odr')).index;
-  let content = this.data?.[conter][index];
-  body.odr = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'consfee'))) {
-  let index = selectedFieldList.find(f => (f.field == 'consfee')).index;
-  let content = this.data?.[conter][index];
-  body.consfee = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'spro'))) {
-  let index = selectedFieldList.find(f => (f.field == 'spro')).index;
-  let content = this.data?.[conter][index];
-  body.spro = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'bros'))) {
-  let index = selectedFieldList.find(f => (f.field == 'bros')).index;
-  let content = this.data?.[conter][index];
-  body.bros = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'tcpbs'))) {
-  let index = selectedFieldList.find(f => (f.field == 'tcpbs')).index;
-  let content = this.data?.[conter][index];
-  body.tcpbs = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'cop'))) {
-  let index = selectedFieldList.find(f => (f.field == 'cop')).index;
-  let content = this.data?.[conter][index];
-  body.cop = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'vop'))) {
-  let index = selectedFieldList.find(f => (f.field == 'vop')).index;
-  let content = this.data?.[conter][index];
-  body.vop = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'bsrn'))) {
-  let index = selectedFieldList.find(f => (f.field == 'bsrn')).index;
-  let content = this.data?.[conter][index];
-  body.bsrn = content || 0;
-}
- if (selectedFieldList.find(f => (f.field == 'tsstam'))) {
-  let index = selectedFieldList.find(f => (f.field == 'tsstam')).index;
-  let content = this.data?.[conter][index];
-  body.tsstam = content || 0;
-}
-bodyarr.push(body);
+      var body = new Body();
+      if (selectedFieldList.find(f => (f.field == 'sstt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'sstt')).index;
+        let content = this.data?.[conter][index];
+        body.sstt = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'am'))) {
+        let index = selectedFieldList.find(f => (f.field == 'am')).index;
+        let content = this.data?.[conter][index];
+        body.am = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'mu'))) {
+        let index = selectedFieldList.find(f => (f.field == 'mu')).index;
+        let content = this.data?.[conter][index];
+        body.mu = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'nw'))) {
+        let index = selectedFieldList.find(f => (f.field == 'nw')).index;
+        let content = this.data?.[conter][index];
+        body.nw = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'fee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'fee')).index;
+        let content = this.data?.[conter][index];
+        body.fee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cfee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cfee')).index;
+        let content = this.data?.[conter][index];
+        body.cfee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cut'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cut')).index;
+        let content = this.data?.[conter][index];
+        body.cut = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'exr'))) {
+        let index = selectedFieldList.find(f => (f.field == 'exr')).index;
+        let content = this.data?.[conter][index];
+        body.exr = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'ssrv'))) {
+        let index = selectedFieldList.find(f => (f.field == 'ssrv')).index;
+        let content = this.data?.[conter][index];
+        body.ssrv = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'prdis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'prdis')).index;
+        let content = this.data?.[conter][index];
+        body.prdis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'dis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'dis')).index;
+        let content = this.data?.[conter][index];
+        body.dis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'adis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'adis')).index;
+        let content = this.data?.[conter][index];
+        body.adis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vra'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vra')).index;
+        let content = this.data?.[conter][index];
+        body.vra = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vam')).index;
+        let content = this.data?.[conter][index];
+        body.vam = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'odt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'odt')).index;
+        let content = this.data?.[conter][index];
+        body.odt = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'odr'))) {
+        let index = selectedFieldList.find(f => (f.field == 'odr')).index;
+        let content = this.data?.[conter][index];
+        body.odr = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'consfee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'consfee')).index;
+        let content = this.data?.[conter][index];
+        body.consfee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'spro'))) {
+        let index = selectedFieldList.find(f => (f.field == 'spro')).index;
+        let content = this.data?.[conter][index];
+        body.spro = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'bros'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bros')).index;
+        let content = this.data?.[conter][index];
+        body.bros = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'tcpbs'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tcpbs')).index;
+        let content = this.data?.[conter][index];
+        body.tcpbs = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cop'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cop')).index;
+        let content = this.data?.[conter][index];
+        body.cop = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vop'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vop')).index;
+        let content = this.data?.[conter][index];
+        body.vop = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'bsrn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bsrn')).index;
+        let content = this.data?.[conter][index];
+        body.bsrn = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'tsstam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tsstam')).index;
+        let content = this.data?.[conter][index];
+        body.tsstam = content || 0;
+      }
+      bodyarr.push(body);
 
     }
     this.bodyList.push(bodyarr);
     debugger;
-    console.log('this.body:',this.bodyList);
+    console.log('this.body:', this.bodyList);
   }
   writeContents(content, fileName, contentType) {
     debugger;
     var a = document.createElement('a');
-    var file = new Blob([JSON.stringify(content)], {type: contentType});
+    var file = new Blob([JSON.stringify(content)], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
     a.click();
-    localStorage['jsonfile'] =JSON.stringify(content);
-    console.log('jsonfile in localstorage is:',localStorage['jsonfile']) ;
-  let flatObj= this.flattenObject({"k2": "v1","k4": "v2","k3": {"k1": "v4","k5": "v5" }});
-  console.log('flatObj:',flatObj);
-  var encodedObj=this.MergeFlatedObjValue(flatObj);
-console.log('encodedObj:',encodedObj);
+    localStorage['jsonfile'] = JSON.stringify(content);
+    console.log('jsonfile in localstorage is:', localStorage['jsonfile']);
+    let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
+    var myJSONString = JSON.stringify(flatObj);
+    console.log('myJSONString:', myJSONString);
+    // var encodedObj = this.MergeFlatedObjValue(flatObj);
+    var encodedObj = this.SortAndMergeValueObj(flatObj);
+    console.log('encodedObj:', encodedObj);
 
   }
 
 
 
 
-mapFields(selectedFieldList) {
-  debugger;
-  console.log('selectedFieldList:', selectedFieldList);
-  console.log('data:', this.data);
+  mapFields(selectedFieldList) {
+    debugger;
+    console.log('selectedFieldList:', selectedFieldList);
+    console.log('data:', this.data);
 
-  this.mapHeaderFields(selectedFieldList);
-  this.mapPaymentFields(selectedFieldList);
-  this.mapBodyFields(selectedFieldList);
-  debugger;
+    this.mapHeaderFields(selectedFieldList);
+    this.mapPaymentFields(selectedFieldList);
+    this.mapBodyFields(selectedFieldList);
+    debugger;
 
-  let expected = {
-    "header": this.header,
-    "body": [
-this.bodyList
-    ],
-    "payments": [
-      this.payment
-    ],
-    "extension": [
-      {
-        "key": null,
-        "value": null
-      }
-    ]
+    let expected = {
+      "header": this.header,
+      "body": [
+        this.bodyList
+      ],
+      "payments": [
+        this.payment
+      ],
+      "extension": [
+        {
+          "key": null,
+          "value": null
+        }
+      ]
+    }
+    console.log('expected:', expected);
+    this.writeContents(expected, 'Sample File' + '.txt', 'text/plain');
+
+
   }
-  console.log('expected:',expected);
-  this.writeContents(expected, 'Sample File'+'.txt', 'text/plain');
 
+  flattenObject(ob) {
+    var toReturn = {};
 
-}
-
- flattenObject(ob) {
-  var toReturn = {};
-
-  for (var i in ob) {
+    for (var i in ob) {
       if (!ob.hasOwnProperty(i)) continue;
 
       if ((typeof ob[i]) == 'object' && ob[i] !== null) {
-          var flatObject = this.flattenObject(ob[i]);
-          for (var x in flatObject) {
-              if (!flatObject.hasOwnProperty(x)) continue;
+        var flatObject = this.flattenObject(ob[i]);
+        for (var x in flatObject) {
+          if (!flatObject.hasOwnProperty(x)) continue;
 
-              toReturn[i + '.' + x] = flatObject[x];
-          }
+          toReturn[i + '.' + x] = flatObject[x];
+        }
       } else {
-          toReturn[i] = ob[i];
+        toReturn[i] = ob[i];
       }
+    }
+    return toReturn;
   }
-  return toReturn;
-}
-MergeFlatedObjValue(obj){
-  debugger;
-  const myJSONString = JSON.stringify(obj);
-  const regexp = /(?<!:)("[\w.]+")/g;
-let matches = myJSONString.matchAll(regexp);
-var MergeFlatedObjValue="";
+  // MergeFlatedObjValue(obj) {
+  //   debugger;
+  //   const myJSONString = JSON.stringify(obj);
+  //   const regexp = /(?<!:)("[\w.]+")/g;
+  //   let matches = myJSONString.matchAll(regexp);
+  //   var MergeFlatedObjValue = "";
+  //   var matchesArray: any[] = [];
 
-for (const match of matches) {
-  var matched=match[0];
-   matched=matched.replace(/['"]+/g, '');
-  MergeFlatedObjValue+=obj[matched]+"#";
 
-}
-  console.log('MergeFlatedObjValue:',MergeFlatedObjValue);
-  return MergeFlatedObjValue;
 
+
+  //   // for (const match of matches) {
+  //   //   var matched = match[0];
+  //   //   matched = matched.replace(/['"]+/g, '');
+  //   //   var item = obj[matched];
+  //   //   matchesArray.push(item.toString());
+
+  //   // }
+  //   const myObject = JSON.stringify(obj);
+  //   const myArray = Object.entries(myObject);
+  //   myArray.sort((a, b) => a[0].localeCompare(b[0]));
+  //   const sortedObject = Object.fromEntries(myArray);
+  //   const sortedJSONString = JSON.stringify(sortedObject);
+
+  //   console.log('sortedJSONString:',sortedJSONString);
+
+
+  //   return MergeFlatedObjValue;
+
+  // }
+  SortAndMergeValueObj(obj: any) {
+    debugger;
+    //let flatObj = this.flattenObject(obj);
+    // let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
+    var myJSONString = JSON.stringify(obj);//"{"k2":"v1","k4":"v2","k3.k1":"v4","k3.k5":"v5"}"
+    const myObject = JSON.parse(myJSONString);
+    const myArray = Object.entries(myObject);
+    myArray.sort((a, b) => a[0].localeCompare(b[0]));
+    const sortedObject = Object.fromEntries(myArray);
+    const sortedJSONString = JSON.stringify(sortedObject);
+    myJSONString = sortedJSONString.replace(/[{}]/g, "");//(16) [0, 3, 5, 8, 10, 13, 15, 18, 20, 26, 28, 31, 33, 39, 41, 44]
+    const indexes: any[] = [];
+    var mergedKey = "";
+    for (let index = 0; index < myJSONString.length; index++) {
+      if (myJSONString[index] == "\"") {
+        indexes.push(index);
+      }
+      console.log(indexes);
+    }
+    debugger;
+    for (var i = 0; i < indexes.length; i++) {
+      debugger;
+      let key = myJSONString.substring(indexes[i], indexes[i + 1]);
+      key = key.slice(1);
+      mergedKey += obj[key] + "#";
+      i += 3;
+    }
+    console.log('mergedKey:', mergedKey);
+    return mergedKey;
   }
+
+
 }//end class
+
