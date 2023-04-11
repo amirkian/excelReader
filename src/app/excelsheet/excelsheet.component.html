@@ -32,14 +32,16 @@
 
       </div>
       <div class="card-footer "> <button type="submit"
-          class="btn btn-primary pull-left">اعتبار سنجی و نگاشت</button>
+          class="btn btn-primary pull-left">اعتبار سنجی و نگاشت</button>      <a (click)='ShowExcelTable()'><i class="fa fa-eye" aria-hidden="true"></i></a>
+
       </div>
+      
 
     </div>
   </form>
   <hr />
   <!-- --------------------------------------------------------------------------  -->
-  <table class="table">
+  <table class="table" *ngIf="showExcelTable">
     <tbody>
       <tr *ngFor="let row of data; index as i">
         <ng-container *ngIf="i==0">

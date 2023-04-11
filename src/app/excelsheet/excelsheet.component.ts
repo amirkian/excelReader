@@ -193,6 +193,7 @@ export class ExcelsheetComponent implements OnInit {
 
   ];
   fieldList: Field[] = this.fields;
+  showExcelTable: boolean=false;
 
   constructor() { }
 
@@ -924,6 +925,10 @@ SortAndMergeValueObj(obj: any) {
   // }
   console.log('mergedKey:', mergedKey);
   return mergedKey;
+}
+
+ShowExcelTable(){
+this.showExcelTable=true;
 }
 
 
