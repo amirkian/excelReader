@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelReader", "ExcelReader\ExcelReader.csproj", "{1F929138-D2FB-4880-A994-81D5DFB741F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{850FA030-B86D-469F-8AF5-2897D4619976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{8DFA1626-F10B-4BF7-96DB-3D09CDA0C0AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F929138-D2FB-4880-A994-81D5DFB741F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F929138-D2FB-4880-A994-81D5DFB741F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F929138-D2FB-4880-A994-81D5DFB741F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F929138-D2FB-4880-A994-81D5DFB741F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850FA030-B86D-469F-8AF5-2897D4619976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850FA030-B86D-469F-8AF5-2897D4619976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850FA030-B86D-469F-8AF5-2897D4619976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850FA030-B86D-469F-8AF5-2897D4619976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFA1626-F10B-4BF7-96DB-3D09CDA0C0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFA1626-F10B-4BF7-96DB-3D09CDA0C0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFA1626-F10B-4BF7-96DB-3D09CDA0C0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFA1626-F10B-4BF7-96DB-3D09CDA0C0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4691A87-6AD9-4977-94CE-D2F3F372E0E9}
+	EndGlobalSection
+EndGlobal

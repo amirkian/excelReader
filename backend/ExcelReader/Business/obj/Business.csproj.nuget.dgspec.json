@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Development\\excelreader\\mine\\excelReader\\backend\\ExcelReader\\Business\\Business.csproj": {}
+  },
+  "projects": {
+    "F:\\Development\\excelreader\\mine\\excelReader\\backend\\ExcelReader\\Business\\Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Development\\excelreader\\mine\\excelReader\\backend\\ExcelReader\\Business\\Business.csproj",
+        "projectName": "Business",
+        "projectPath": "F:\\Development\\excelreader\\mine\\excelReader\\backend\\ExcelReader\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\programmer 6\\.nuget\\packages\\",
+        "outputPath": "F:\\Development\\excelreader\\mine\\excelReader\\backend\\ExcelReader\\Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\programmer 6\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "F:\\eefa\\linkedin\\nugets": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "TaxCollectData.Library": {
+              "target": "Package",
+              "version": "[0.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

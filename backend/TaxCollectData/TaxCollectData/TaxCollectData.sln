@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCollectData", "TaxCollectData\TaxCollectData.csproj", "{7A36E019-D62A-40D7-B07E-B1987666D395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{AAF8766D-1DEE-4A12-9F1A-9802BB55B184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{425D5DC8-1A31-4B64-B1F7-A409B3A18498}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A36E019-D62A-40D7-B07E-B1987666D395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A36E019-D62A-40D7-B07E-B1987666D395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A36E019-D62A-40D7-B07E-B1987666D395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A36E019-D62A-40D7-B07E-B1987666D395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF8766D-1DEE-4A12-9F1A-9802BB55B184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF8766D-1DEE-4A12-9F1A-9802BB55B184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF8766D-1DEE-4A12-9F1A-9802BB55B184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF8766D-1DEE-4A12-9F1A-9802BB55B184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425D5DC8-1A31-4B64-B1F7-A409B3A18498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425D5DC8-1A31-4B64-B1F7-A409B3A18498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425D5DC8-1A31-4B64-B1F7-A409B3A18498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425D5DC8-1A31-4B64-B1F7-A409B3A18498}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3511639-CA5A-465F-8D6A-68BBA933904D}
+	EndGlobalSection
+EndGlobal

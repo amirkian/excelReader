@@ -14,7 +14,7 @@ const FileSaver = require('file-saver');
 @Component({
   selector: 'app-excelsheet',
   templateUrl: './excelsheet.component.html',
-  styleUrls: ['./excelsheet.component.sass']
+  styleUrls: ['./excelsheet.component.less']
 })
 export class ExcelsheetComponent implements OnInit {
   public data!: [][];
@@ -549,148 +549,148 @@ export class ExcelsheetComponent implements OnInit {
 
     let conter = 0;
 
-    bodyField.forEach((field) => {
-      var body = new Body();
-      conter++;
-      let index;
-      let content;
-      if(selectedFieldList.find(f => f.field == field.name)){
-         index = selectedFieldList.find(f => f.field == field.name).index;
-          content = this.data?.[conter][index] || field.defaultValue;
-      }
-      else{
-         content =  field.defaultValue;
-      }
-      body[field.name] = content;
-      bodyarr.push(body);
-    });
-
-    // for (var item of this.data.slice(1)) {
-    //   conter++;
+    // bodyField.forEach((field) => {
     //   var body = new Body();
-    //   if (selectedFieldList.find(f => (f.field == 'sstt'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'sstt')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.sstt = content || 0;
+    //   conter++;
+    //   let index;
+    //   let content;
+    //   if (selectedFieldList.find(f => f.field == field.name)) {
+    //     index = selectedFieldList.find(f => f.field == field.name).index;
+    //     content = this.data?.[conter][index] || field.defaultValue;
     //   }
-    //   if (selectedFieldList.find(f => (f.field == 'am'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'am')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.am = content || 0;
+    //   else {
+    //     content = field.defaultValue;
     //   }
-    //   if (selectedFieldList.find(f => (f.field == 'mu'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'mu')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.mu = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'nw'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'nw')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.nw = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'fee'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'fee')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.fee = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'cfee'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'cfee')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.cfee = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'cut'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'cut')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.cut = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'exr'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'exr')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.exr = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'ssrv'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'ssrv')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.ssrv = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'prdis'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'prdis')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.prdis = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'dis'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'dis')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.dis = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'adis'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'adis')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.adis = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'vra'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'vra')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.vra = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'vam'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'vam')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.vam = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'odt'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'odt')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.odt = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'odr'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'odr')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.odr = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'consfee'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'consfee')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.consfee = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'spro'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'spro')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.spro = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'bros'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'bros')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.bros = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'tcpbs'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'tcpbs')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.tcpbs = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'cop'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'cop')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.cop = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'vop'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'vop')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.vop = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'bsrn'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'bsrn')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.bsrn = content || 0;
-    //   }
-    //   if (selectedFieldList.find(f => (f.field == 'tsstam'))) {
-    //     let index = selectedFieldList.find(f => (f.field == 'tsstam')).index;
-    //     let content = this.data?.[conter][index];
-    //     body.tsstam = content || 0;
-    //   }
+    //   body[field.name] = content;
     //   bodyarr.push(body);
+    // });
 
-    // }
+    for (var item of this.data.slice(1)) {
+      conter++;
+      var body = new Body();
+      if (selectedFieldList.find(f => (f.field == 'sstt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'sstt')).index;
+        let content = this.data?.[conter][index];
+        body.sstt = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'am'))) {
+        let index = selectedFieldList.find(f => (f.field == 'am')).index;
+        let content = this.data?.[conter][index];
+        body.am = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'mu'))) {
+        let index = selectedFieldList.find(f => (f.field == 'mu')).index;
+        let content = this.data?.[conter][index];
+        body.mu = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'nw'))) {
+        let index = selectedFieldList.find(f => (f.field == 'nw')).index;
+        let content = this.data?.[conter][index];
+        body.nw = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'fee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'fee')).index;
+        let content = this.data?.[conter][index];
+        body.fee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cfee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cfee')).index;
+        let content = this.data?.[conter][index];
+        body.cfee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cut'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cut')).index;
+        let content = this.data?.[conter][index];
+        body.cut = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'exr'))) {
+        let index = selectedFieldList.find(f => (f.field == 'exr')).index;
+        let content = this.data?.[conter][index];
+        body.exr = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'ssrv'))) {
+        let index = selectedFieldList.find(f => (f.field == 'ssrv')).index;
+        let content = this.data?.[conter][index];
+        body.ssrv = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'prdis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'prdis')).index;
+        let content = this.data?.[conter][index];
+        body.prdis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'dis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'dis')).index;
+        let content = this.data?.[conter][index];
+        body.dis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'adis'))) {
+        let index = selectedFieldList.find(f => (f.field == 'adis')).index;
+        let content = this.data?.[conter][index];
+        body.adis = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vra'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vra')).index;
+        let content = this.data?.[conter][index];
+        body.vra = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vam')).index;
+        let content = this.data?.[conter][index];
+        body.vam = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'odt'))) {
+        let index = selectedFieldList.find(f => (f.field == 'odt')).index;
+        let content = this.data?.[conter][index];
+        body.odt = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'odr'))) {
+        let index = selectedFieldList.find(f => (f.field == 'odr')).index;
+        let content = this.data?.[conter][index];
+        body.odr = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'consfee'))) {
+        let index = selectedFieldList.find(f => (f.field == 'consfee')).index;
+        let content = this.data?.[conter][index];
+        body.consfee = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'spro'))) {
+        let index = selectedFieldList.find(f => (f.field == 'spro')).index;
+        let content = this.data?.[conter][index];
+        body.spro = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'bros'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bros')).index;
+        let content = this.data?.[conter][index];
+        body.bros = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'tcpbs'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tcpbs')).index;
+        let content = this.data?.[conter][index];
+        body.tcpbs = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'cop'))) {
+        let index = selectedFieldList.find(f => (f.field == 'cop')).index;
+        let content = this.data?.[conter][index];
+        body.cop = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'vop'))) {
+        let index = selectedFieldList.find(f => (f.field == 'vop')).index;
+        let content = this.data?.[conter][index];
+        body.vop = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'bsrn'))) {
+        let index = selectedFieldList.find(f => (f.field == 'bsrn')).index;
+        let content = this.data?.[conter][index];
+        body.bsrn = content || 0;
+      }
+      if (selectedFieldList.find(f => (f.field == 'tsstam'))) {
+        let index = selectedFieldList.find(f => (f.field == 'tsstam')).index;
+        let content = this.data?.[conter][index];
+        body.tsstam = content || 0;
+      }
+      bodyarr.push(body);
+
+    }
     this.bodyList.push(bodyarr);
     debugger;
     console.log('this.body:', this.bodyList);
@@ -704,35 +704,85 @@ export class ExcelsheetComponent implements OnInit {
     a.click();
     localStorage['jsonfile'] = JSON.stringify(content);
     console.log('jsonfile in localstorage is:', localStorage['jsonfile']);
-    let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
-    var myJSONString = JSON.stringify(flatObj);
-    console.log('myJSONString:', myJSONString);
-    // var encodedObj = this.MergeFlatedObjValue(flatObj);
-    var encodedObj = this.SortAndMergeValueObj(flatObj);
-    console.log('encodedObj:', encodedObj);
-
-  }
-
-
-
-
-  mapFields(selectedFieldList) {
-    debugger;
-    console.log('selectedFieldList:', selectedFieldList);
-    console.log('data:', this.data);
-
-    this.mapHeaderFields(selectedFieldList);
-    this.mapPaymentFields(selectedFieldList);
-    this.mapBodyFields(selectedFieldList);
-    debugger;
-
-    let expected = {
-      "header": this.header,
+    /***********/
+    var object =
+    {
+      "header":
+      {
+        "taxid": "A111220E1B9155CB1F18C7",
+        "indatim": "1665490063785",
+        "Indati2m": "1665490063785",
+        "inty": "1",
+        "inno": "0000011300",
+        "irtaxid": null,
+        "inp": "1",
+        "ins": "1",
+        "tins": "19117484910001",
+        "tob": "1",
+        "bid": "0",
+        "tinb": "19117484910002",
+        "sbc": "0",
+        "bpc": "0",
+        "bbc": "0",
+        "ft": "0",
+        "bpn": "0",
+        "scln": "0",
+        "scc": "0",
+        "crn": "0",
+        "billid": "0",
+        "tprdis": "2400000",
+        "tdis": "0",
+        "tadis": "2400000",
+        "tvam": "216000",
+        "todam": "0",
+        "tbill": "2616000",
+        "setm": "1",
+        "cap": "2616000",
+        "insp": "0",
+        "tvop": "216000",
+        "tax17": "0"
+      },
       "body": [
-        this.bodyList
+        {
+          "sstid": "1254219865985",
+          "روغن بهران": "sstt",
+          "am": "1",
+          "لیتر": "mu",
+          "fee": "2400000",
+          "cfee": "0",
+          "cut": "0",
+          "exr": "0",
+          "prdis": "2400000",
+          "dis": "0",
+          "adis": "2400000",
+          "vra": "0.09",
+          "vam": "216000",
+          "odt": "0",
+          "odr": "0",
+          "odam": "0",
+          "olt": "0",
+          "olr": "0",
+          "olam": "0",
+          "consfee": "0",
+          "spro": "0",
+          "bros": "0",
+          "tcpbs": "0",
+          "cop": "0",
+          "vop": "216000",
+          "bsrn": null,
+          "tsstam": "2616000"
+        }
       ],
       "payments": [
-        this.payment
+        {
+          "iinn": "125036",
+          "acn": "252544",
+          "trmn": "2356566",
+          "trn": "252545",
+          "pcn": "6037991785693265",
+          "pid": "19117484910002",
+          "pdt": "1665490061447"
+        }
       ],
       "extension": [
         {
@@ -741,92 +791,141 @@ export class ExcelsheetComponent implements OnInit {
         }
       ]
     }
-    console.log('expected:', expected);
-    this.writeContents(expected, 'Sample File' + '.txt', 'text/plain');
+  
 
+        /***********/
+     //   let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
+        let flatObj = this.flattenObject(object);
+var myJSONString = JSON.stringify(flatObj);
+console.log('myJSONString:', myJSONString);
+// var encodedObj = this.MergeFlatedObjValue(flatObj);
+var encodedObj = this.SortAndMergeValueObj(flatObj);
+console.log('encodedObj:', encodedObj);
 
-  }
-
-  flattenObject(ob) {
-    var toReturn = {};
-
-    for (var i in ob) {
-      if (!ob.hasOwnProperty(i)) continue;
-
-      if ((typeof ob[i]) == 'object' && ob[i] !== null) {
-        var flatObject = this.flattenObject(ob[i]);
-        for (var x in flatObject) {
-          if (!flatObject.hasOwnProperty(x)) continue;
-
-          toReturn[i + '.' + x] = flatObject[x];
-        }
-      } else {
-        toReturn[i] = ob[i];
-      }
     }
-    return toReturn;
+
+
+
+
+mapFields(selectedFieldList) {
+  debugger;
+  console.log('selectedFieldList:', selectedFieldList);
+  console.log('data:', this.data);
+
+  this.mapHeaderFields(selectedFieldList);
+  this.mapPaymentFields(selectedFieldList);
+  this.mapBodyFields(selectedFieldList);
+  debugger;
+
+  let expected = {
+    "header": this.header,
+    "body": [
+      this.bodyList
+    ],
+    "payments": [
+      this.payment
+    ],
+    "extension": [
+      {
+        "key": null,
+        "value": null
+      }
+    ]
   }
-  // MergeFlatedObjValue(obj) {
-  //   debugger;
-  //   const myJSONString = JSON.stringify(obj);
-  //   const regexp = /(?<!:)("[\w.]+")/g;
-  //   let matches = myJSONString.matchAll(regexp);
-  //   var MergeFlatedObjValue = "";
-  //   var matchesArray: any[] = [];
+  console.log('expected:', expected);
+  this.writeContents(expected, 'Sample File' + '.txt', 'text/plain');
+
+
+}
+
+flattenObject(ob) {
+  var toReturn = {};
+
+  for (var i in ob) {
+    if (!ob.hasOwnProperty(i)) continue;
+
+    if ((typeof ob[i]) == 'object' && ob[i] !== null) {
+      var flatObject = this.flattenObject(ob[i]);
+      for (var x in flatObject) {
+        if (!flatObject.hasOwnProperty(x)) continue;
+
+        toReturn[i + '.' + x] = flatObject[x];
+      }
+    } else {
+      toReturn[i] = ob[i];
+    }
+  }
+  return toReturn;
+}
+// MergeFlatedObjValue(obj) {
+//   debugger;
+//   const myJSONString = JSON.stringify(obj);
+//   const regexp = /(?<!:)("[\w.]+")/g;
+//   let matches = myJSONString.matchAll(regexp);
+//   var MergeFlatedObjValue = "";
+//   var matchesArray: any[] = [];
 
 
 
 
-  //   // for (const match of matches) {
-  //   //   var matched = match[0];
-  //   //   matched = matched.replace(/['"]+/g, '');
-  //   //   var item = obj[matched];
-  //   //   matchesArray.push(item.toString());
+//   // for (const match of matches) {
+//   //   var matched = match[0];
+//   //   matched = matched.replace(/['"]+/g, '');
+//   //   var item = obj[matched];
+//   //   matchesArray.push(item.toString());
 
-  //   // }
-  //   const myObject = JSON.stringify(obj);
-  //   const myArray = Object.entries(myObject);
-  //   myArray.sort((a, b) => a[0].localeCompare(b[0]));
-  //   const sortedObject = Object.fromEntries(myArray);
-  //   const sortedJSONString = JSON.stringify(sortedObject);
+//   // }
+//   const myObject = JSON.stringify(obj);
+//   const myArray = Object.entries(myObject);
+//   myArray.sort((a, b) => a[0].localeCompare(b[0]));
+//   const sortedObject = Object.fromEntries(myArray);
+//   const sortedJSONString = JSON.stringify(sortedObject);
 
-  //   console.log('sortedJSONString:',sortedJSONString);
+//   console.log('sortedJSONString:',sortedJSONString);
 
 
-  //   return MergeFlatedObjValue;
+//   return MergeFlatedObjValue;
 
+// }
+SortAndMergeValueObj(obj: any) {
+  debugger;
+  var mergedKey = "";
+
+  //let flatObj = this.flattenObject(obj);
+  // let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
+  var myJSONString = JSON.stringify(obj);//"{"k2":"v1","k4":"v2","k3.k1":"v4","k3.k5":"v5"}"
+  const myObject = JSON.parse(myJSONString);
+  const myArray = Object.entries(myObject);
+  myArray.sort((a, b) => a[0].localeCompare(b[0]));
+  const sortedObject = Object.fromEntries(myArray);
+  console.log('sorted object:',sortedObject);
+  for (const [key, value] of Object.entries(sortedObject)) {
+   // console.log(`${key}: ${value}`);
+   mergedKey += value + "#";
+  }
+  const sortedJSONString  = JSON.stringify(sortedObject);
+  console.log(' sortedJSONString :',sortedObject);
+
+ // myJSONString = sortedJSONString.replace(/[{}]/g, "");//(16) [0, 3, 5, 8, 10, 13, 15, 18, 20, 26, 28, 31, 33, 39, 41, 44]
+//  const indexes: any[] = [];
+  // for (let index = 0; index < myJSONString.length; index++) {
+  //   if (myJSONString[index] == "\"") {
+  //     indexes.push(index);
+  //   }
+  //   console.log(indexes);
   // }
-  SortAndMergeValueObj(obj: any) {
-    debugger;
-    //let flatObj = this.flattenObject(obj);
-    // let flatObj = this.flattenObject({ "k2": "v1", "k4": "v2", "k3": { "k1": "v4", "k5": "v5" } });
-    var myJSONString = JSON.stringify(obj);//"{"k2":"v1","k4":"v2","k3.k1":"v4","k3.k5":"v5"}"
-    const myObject = JSON.parse(myJSONString);
-    const myArray = Object.entries(myObject);
-    myArray.sort((a, b) => a[0].localeCompare(b[0]));
-    const sortedObject = Object.fromEntries(myArray);
-    const sortedJSONString = JSON.stringify(sortedObject);
-    myJSONString = sortedJSONString.replace(/[{}]/g, "");//(16) [0, 3, 5, 8, 10, 13, 15, 18, 20, 26, 28, 31, 33, 39, 41, 44]
-    const indexes: any[] = [];
-    var mergedKey = "";
-    for (let index = 0; index < myJSONString.length; index++) {
-      if (myJSONString[index] == "\"") {
-        indexes.push(index);
-      }
-      console.log(indexes);
-    }
-    debugger;
-    for (var i = 0; i < indexes.length; i++) {
-      debugger;
-      let key = myJSONString.substring(indexes[i], indexes[i + 1]);
-      key = key.slice(1);
-      mergedKey += obj[key] + "#";
-      i += 3;
-    }
-    console.log('mergedKey:', mergedKey);
-    return mergedKey;
-  }
+  debugger;
+  // for (var i = 0; i < indexes.length; i++) {
+  //   debugger;
+  //   let key = myJSONString.substring(indexes[i], indexes[i + 1]);
+  //   key = key.slice(1);
+  //   mergedKey += obj[key] + "#";
+  //   i += 3;
+  // }
+  console.log('mergedKey:', mergedKey);
+  return mergedKey;
+}
 
 
-}//end class
+  }//end class
 

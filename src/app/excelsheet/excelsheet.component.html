@@ -1,46 +1,58 @@
-<input id="fileUploder" type="file" (change)="onFileChange($event)" multiple="false" />
-
-<hr/>
-<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
-
-  <ng-container *ngIf="data" >
-  <div *ngFor="let row of data[0]; index as ind " class="my-2">
-    <div class="row">
-        <div class="col-md-2">    item {{row}}:</div>
-        <div class="col">           
-    <select [id]="'select' + ind" [name]="'select' + ind" ngModel class="form-control select2 select2-hidden-accessible " style="width: 400px" tabindex="-1" aria-hidden="true">
-        <option [ngValue]="field.value" *ngFor="let field of fields;let i = index" [attr.selected]="field.index == ind ? true : null">
-          {{field.key}} <span *ngIf="field.required">*</span>
-        </option>
-      </select>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label" for="customFile">فایل اکسل خود را جهت مپ کردن فیلدها وارد کنید</label>
+      <input id="fileUploder" type="file" class="form-control" (change)="onFileChange($event)" multiple="false" />
     </div>
-
   </div>
 
-    <div>
-      <button type="submit">اعتبار سنجی و نگاشت</button>
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="row my-3">
+    <div class="card p-0" *ngIf="data">
+      <div class="card-header">
+        فرم نگاشت اکسل
+      </div>
+      <div class="card-body row">
+        <div *ngFor="let row of data[0]; index as ind " class="my-2 col-md-4">
+          <div class="">
+            <div class="col-md-6">
+              <div class="col"> {{row}}:</div>
+              <div class="col">
+                <select [id]="'select' + ind" [name]="'select' + ind" ngModel
+                  class="form-control select2 select2-hidden-accessible " style="width: 400px" tabindex="-1"
+                  aria-hidden="true">
+                  <option [ngValue]="field.value" *ngFor="let field of fields;let i = index"
+                    [attr.selected]="field.index == ind ? true : null">
+                    {{field.key}} <span *ngIf="field.required">*</span>
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer "> <button type="submit"
+          class="btn btn-primary pull-left">اعتبار سنجی و نگاشت</button>
+      </div>
 
     </div>
-</ng-container>
   </form>
-<hr/>
+  <hr />
   <!-- --------------------------------------------------------------------------  -->
-<table class="table">
+  <table class="table">
     <tbody>
-        <tr *ngFor="let row of data; index as i">
-            <ng-container *ngIf="i==0" >
-                <th  *ngFor="let cell of row">
-                    {{cell}}
-            </th>
-            </ng-container>
-            <ng-container *ngIf="i>0" >
-                <td  *ngFor="let cell of row">
-                    {{cell}}
-                </td>
-            </ng-container>
-        </tr>
+      <tr *ngFor="let row of data; index as i">
+        <ng-container *ngIf="i==0">
+          <th *ngFor="let cell of row">
+            {{cell}}
+          </th>
+        </ng-container>
+        <ng-container *ngIf="i>0">
+          <td *ngFor="let cell of row">
+            {{cell}}
+          </td>
+        </ng-container>
+      </tr>
     </tbody>
-</table>
-
-
+  </table>
+</div>

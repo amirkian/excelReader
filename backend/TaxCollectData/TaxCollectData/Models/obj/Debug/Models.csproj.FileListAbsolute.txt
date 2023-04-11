@@ -1,0 +1,6 @@
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\bin\Debug\Models.dll
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\bin\Debug\Models.pdb
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\obj\Debug\Models.dll
+F:\Development\excelreader\mine\excelReader\backend\TaxCollectData\TaxCollectData\Models\obj\Debug\Models.pdb
